@@ -1,1 +1,7 @@
-# lp2-projeto
+# Projeto de Java
+
+### Participantes
+
+> Jhonatan Souza de Siqueira
+
+> Raphael Almeida
