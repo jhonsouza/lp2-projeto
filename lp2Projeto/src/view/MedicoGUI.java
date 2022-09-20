@@ -17,14 +17,13 @@ import java.awt.EventQueue;
 
 
 
-public class LoginGUI extends JFrame {
+public class MedicoGUI extends JFrame {
     private JPanel contentPane;
     private JTextField txtLogin;
     private JPasswordField txtPassword;
     private JButton btnEnviar;
     private JButton btnLimpar;
-    private static LoginGUI frame;
-    private MedicoGUI tela;
+    private static MedicoGUI frame;
 
     /**
      * 
@@ -34,7 +33,7 @@ public class LoginGUI extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() { 
                try {
-                    frame = new LoginGUI();
+                    frame = new MedicoGUI();
                     frame.setVisible(true);
                } catch (Exception e) {
                     e.printStackTrace();
@@ -45,25 +44,25 @@ public class LoginGUI extends JFrame {
     /**
      * Crate the frame
      */
-    public LoginGUI(){
+    public MedicoGUI(){
 
-        setTitle("Tela de Login");
+        setTitle("Cadastrp de Médicos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(200, 200, 400, 400);
+        setBounds(800, 800, 400, 400);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5,5,5,5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblLogin = new JLabel("Login");
+        JLabel lblLogin = new JLabel("CRM");
         lblLogin.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblLogin.setBounds(64, 38, 82, 25);
         contentPane.add(lblLogin);
 
-        txtLogin = new JTextField();
+        txtCRM = new JTextField();
         txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
         txtLogin.setBounds(64, 73, 173, 25);
-        contentPane.add(txtLogin);
+        contentPane.add(txtCRM);
         txtLogin.setColumns(10);
 
         JLabel lblPassword = new JLabel("Password");
@@ -99,9 +98,7 @@ public class LoginGUI extends JFrame {
                 }
                 else {
                     if (txtLogin.getText().equals("user") && isPasswordValid(input)) {
-                        frame.dispose();
-                        tela = new MedicoGUI();
-                        tela.setVisible(true);
+                        JOptionPane.showMessageDialog(frame, "parabens você sabe a porra do seu login e senha!");
                     }
                     else{
                         JOptionPane.showMessageDialog(frame, "Senha ou Login invalidos!");
