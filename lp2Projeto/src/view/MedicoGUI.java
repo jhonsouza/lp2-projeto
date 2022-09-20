@@ -3,7 +3,6 @@ package view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,12 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.EventQueue;
+import javax.swing.*;
 
 
 
 public class MedicoGUI extends JFrame {
     private JPanel contentPane;
-
+    private JComboBox ComboBox;
     private JTextField txtTelefone;
     private JTextField txtCRM;
     private JTextField txtNome;
@@ -46,9 +46,28 @@ public class MedicoGUI extends JFrame {
     /**
      * Crate the frame
      */
+
+
+    public abstract class ComboBox {
+        JFrame f;
+        ComboBox() {
+            f = new JFrame("Especialidade");
+            String especialidade[] = {
+                "Cardiologista", "Clinico Geral", "Dermatologista",
+                "Endocrinologista", "Neurologista"
+            };
+            JComboBox cb = new JComboBox(especialidade);
+            cb.setBounds(90, 240, 170, 25);
+            f.add(cb);
+            f.setLayout(null);
+            f.setSize(400, 500);
+            f.setVisible(true);
+        }
+    }
+
     public MedicoGUI(){
 
-        setTitle("Cadastro de Médicos");
+        setTitle("Cadastro de M" + '\u00E9' + "dicos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(800, 800, 400, 400);
         contentPane = new JPanel();
@@ -58,45 +77,46 @@ public class MedicoGUI extends JFrame {
 
         JLabel lblCRM = new JLabel("CRM");
         lblCRM.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblCRM.setBounds(64, 38, 82, 25);
+        lblCRM.setBounds(90, 30, 80, 25);
         contentPane.add(lblCRM);
 
         txtCRM = new JTextField();
         txtCRM.setFont(new Font("Tahoma", Font.PLAIN, 19));
-        txtCRM.setBounds(64, 73, 173, 25);
+        txtCRM.setBounds(90, 60, 170, 25);
         contentPane.add(txtCRM);
         txtCRM.setColumns(10);
 
         JLabel lblNome = new JLabel("NOME");
         lblNome.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblNome.setBounds(64, 38, 82, 25);
+        lblNome.setBounds(90, 100, 80, 25);
         contentPane.add(lblNome);
 
         txtNome = new JTextField();
         txtNome.setFont(new Font("Tahoma", Font.PLAIN, 19));
-        txtNome.setBounds(64, 73, 173, 25);
+        txtNome.setBounds(90, 130, 170, 25);
         contentPane.add(txtNome);
         txtNome.setColumns(10);
 
         JLabel lblCPF = new JLabel("CPF");
         lblCPF.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblCPF.setBounds(64, 38, 82, 25);
+        lblCPF.setBounds(90, 170, 82, 25);
         contentPane.add(lblCPF);
 
         txtCPF = new JTextField();
         txtCPF.setFont(new Font("Tahoma", Font.PLAIN, 19));
-        txtCPF.setBounds(64, 73, 173, 25);
+        txtCPF.setBounds(90, 200, 170, 25);
         contentPane.add(txtCPF);
         txtCPF.setColumns(10);
 
+
         JLabel lblTelefone = new JLabel("Telefone");
         lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblTelefone.setBounds(64, 103, 103, 40);
+        lblTelefone.setBounds(90, 270, 100, 40);
         contentPane.add(lblTelefone);
 
         txtTelefone = new JTextField();
         txtTelefone.setFont(new Font("Tahoma", Font.PLAIN, 19));
-        txtTelefone.setBounds(64, 143, 173, 25);
+        txtTelefone.setBounds(90, 300, 170, 25);
         contentPane.add(txtTelefone);
         txtTelefone.setColumns(10);
 
@@ -110,7 +130,7 @@ public class MedicoGUI extends JFrame {
         }
         });
         btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
-        btnLimpar.setBounds(64, 193, 110, 32);
+        btnLimpar.setBounds(64, 310, 110, 32);
         contentPane.add(btnLimpar);
         
         btnEnviar = new JButton("Enviar");
@@ -129,7 +149,7 @@ public class MedicoGUI extends JFrame {
             }
         });
         btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 17));
-        btnEnviar.setBounds(180, 193, 110, 32);
+        btnEnviar.setBounds(180, 310, 110, 32);
         contentPane.add(btnEnviar);
     }
     
