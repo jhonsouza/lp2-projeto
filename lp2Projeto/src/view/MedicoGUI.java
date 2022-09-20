@@ -4,13 +4,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.EventQueue;
@@ -19,9 +17,8 @@ import java.awt.EventQueue;
 
 public class MedicoGUI extends JFrame {
     private JPanel contentPane;
-    private JTextField txtLogin;
-    private JPasswordField txtTelefone;
 
+    private JTextField txtTelefone;
     private JTextField txtCRM;
     private JTextField txtNome;
     private JTextField txtCPF;
@@ -70,10 +67,10 @@ public class MedicoGUI extends JFrame {
         contentPane.add(txtCRM);
         txtCRM.setColumns(10);
 
-        JLabel lblNOME = new JLabel("NOME");
-        lblNOME.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblNOME.setBounds(64, 38, 82, 25);
-        contentPane.add(lblNOME);
+        JLabel lblNome = new JLabel("NOME");
+        lblNome.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblNome.setBounds(64, 38, 82, 25);
+        contentPane.add(lblNome);
 
         txtNome = new JTextField();
         txtNome.setFont(new Font("Tahoma", Font.PLAIN, 19));
@@ -97,7 +94,7 @@ public class MedicoGUI extends JFrame {
         lblTelefone.setBounds(64, 103, 103, 40);
         contentPane.add(lblTelefone);
 
-        txtTelefone = new JPasswordField();
+        txtTelefone = new JTextField();
         txtTelefone.setFont(new Font("Tahoma", Font.PLAIN, 19));
         txtTelefone.setBounds(64, 143, 173, 25);
         contentPane.add(txtTelefone);
@@ -106,7 +103,9 @@ public class MedicoGUI extends JFrame {
         btnLimpar = new JButton("Limpar");
         btnLimpar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                txtLogin.setText("");
+                txtCRM.setText("");
+                txtNome.setText("");
+                txtCPF.setText("");
                 txtTelefone.setText("");
         }
         });
@@ -117,32 +116,16 @@ public class MedicoGUI extends JFrame {
         btnEnviar = new JButton("Enviar");
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (txtLogin.getText().equals("") || input.length == 0) {
+                if (
+                    txtCRM.getText().equals("") || txtNome.getText().equals("") ||
+                    txtCPF.getText().equals("") || txtTelefone.getText().equals("")
+                    ) {
                     JOptionPane.showMessageDialog(frame, "Todos os campos devem ser preenchidos!");
-                    txtLogin.setText("");
+                    txtCRM.setText("");
+                    txtNome.setText("");
+                    txtCPF.setText("");
                     txtTelefone.setText("");
                 }
-                else {
-                    if (txtLogin.getText().equals("user") && isPasswordValid(input)) {
-                        JOptionPane.showMessageDialog(frame, "parabens você sabe a porra do seu login e senha!");
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(frame, "Senha ou Login invalidos!");
-                    }
-                }
-            }
-
-            private boolean isPasswordValid(char[] input) {
-                boolean passwordValid = false;
-                char[] password = {'1', '2', '3', '4', '5'};
-                if (input.length == 0){
-                    passwordValid = false;
-                }
-                else{
-                    passwordValid = Arrays.equals(input, password);
-                }
-
-                return passwordValid;
             }
         });
         btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 17));
