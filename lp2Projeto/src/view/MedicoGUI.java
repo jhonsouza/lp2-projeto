@@ -20,7 +20,12 @@ import java.awt.EventQueue;
 public class MedicoGUI extends JFrame {
     private JPanel contentPane;
     private JTextField txtLogin;
-    private JPasswordField txtPassword;
+    private JPasswordField txtTelefone;
+
+    private JTextField txtCRM;
+    private JTextField txtNome;
+    private JTextField txtCPF;
+
     private JButton btnEnviar;
     private JButton btnLimpar;
     private static MedicoGUI frame;
@@ -46,7 +51,7 @@ public class MedicoGUI extends JFrame {
      */
     public MedicoGUI(){
 
-        setTitle("Cadastrp de Médicos");
+        setTitle("Cadastro de Médicos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(800, 800, 400, 400);
         contentPane = new JPanel();
@@ -54,33 +59,55 @@ public class MedicoGUI extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblLogin = new JLabel("CRM");
-        lblLogin.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblLogin.setBounds(64, 38, 82, 25);
-        contentPane.add(lblLogin);
+        JLabel lblCRM = new JLabel("CRM");
+        lblCRM.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblCRM.setBounds(64, 38, 82, 25);
+        contentPane.add(lblCRM);
 
         txtCRM = new JTextField();
-        txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
-        txtLogin.setBounds(64, 73, 173, 25);
+        txtCRM.setFont(new Font("Tahoma", Font.PLAIN, 19));
+        txtCRM.setBounds(64, 73, 173, 25);
         contentPane.add(txtCRM);
-        txtLogin.setColumns(10);
+        txtCRM.setColumns(10);
 
-        JLabel lblPassword = new JLabel("Password");
-        lblPassword.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblPassword.setBounds(64, 103, 103, 40);
-        contentPane.add(lblPassword);
+        JLabel lblNOME = new JLabel("NOME");
+        lblNOME.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblNOME.setBounds(64, 38, 82, 25);
+        contentPane.add(lblNOME);
 
-        txtPassword = new JPasswordField();
-        txtPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
-        txtPassword.setBounds(64, 143, 173, 25);
-        contentPane.add(txtPassword);
-        txtPassword.setColumns(10);
+        txtNome = new JTextField();
+        txtNome.setFont(new Font("Tahoma", Font.PLAIN, 19));
+        txtNome.setBounds(64, 73, 173, 25);
+        contentPane.add(txtNome);
+        txtNome.setColumns(10);
+
+        JLabel lblCPF = new JLabel("CPF");
+        lblCPF.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblCPF.setBounds(64, 38, 82, 25);
+        contentPane.add(lblCPF);
+
+        txtCPF = new JTextField();
+        txtCPF.setFont(new Font("Tahoma", Font.PLAIN, 19));
+        txtCPF.setBounds(64, 73, 173, 25);
+        contentPane.add(txtCPF);
+        txtCPF.setColumns(10);
+
+        JLabel lblTelefone = new JLabel("Telefone");
+        lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblTelefone.setBounds(64, 103, 103, 40);
+        contentPane.add(lblTelefone);
+
+        txtTelefone = new JPasswordField();
+        txtTelefone.setFont(new Font("Tahoma", Font.PLAIN, 19));
+        txtTelefone.setBounds(64, 143, 173, 25);
+        contentPane.add(txtTelefone);
+        txtTelefone.setColumns(10);
 
         btnLimpar = new JButton("Limpar");
         btnLimpar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 txtLogin.setText("");
-                txtPassword.setText("");
+                txtTelefone.setText("");
         }
         });
         btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
@@ -90,11 +117,10 @@ public class MedicoGUI extends JFrame {
         btnEnviar = new JButton("Enviar");
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                char[] input = txtPassword.getPassword();
                 if (txtLogin.getText().equals("") || input.length == 0) {
                     JOptionPane.showMessageDialog(frame, "Todos os campos devem ser preenchidos!");
                     txtLogin.setText("");
-                    txtPassword.setText("");
+                    txtTelefone.setText("");
                 }
                 else {
                     if (txtLogin.getText().equals("user") && isPasswordValid(input)) {
