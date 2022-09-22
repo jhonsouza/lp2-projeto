@@ -1,4 +1,8 @@
 package main;
+
+import view.LoginGUI;
+import controller.ControllerLogin;
+
 public class App {
     /**
      * @author Jhonatan Siqueira
@@ -20,6 +24,8 @@ public class App {
      * 
      */
     public static void main(String[] args) throws Exception {
+        LoginGUI lGui = new LoginGUI();
+        ControllerLogin clogin = new ControllerLogin(lGui);
         
     }
 }

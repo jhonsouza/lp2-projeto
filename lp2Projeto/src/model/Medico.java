@@ -2,11 +2,11 @@ package model;
 
 public class Medico extends Pessoa {
     private String crm;
-    private String esp;
+    private Object esp;
 
     public Medico(){}
 
-    public Medico(String crm, String esp, String nome, String cpf, String tel){
+    public Medico(String crm, Object esp, String nome, String cpf, String tel){
         super(nome, cpf, tel);
         this.crm = crm;
         this.esp = esp;
@@ -22,7 +22,7 @@ public class Medico extends Pessoa {
     public void setEsp(String esp) {
         this.esp = esp;
     }
-    public String getEsp() {
+    public Object getEsp() {
         return esp;
     }
 

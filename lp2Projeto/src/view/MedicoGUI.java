@@ -8,10 +8,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import controller.ControllerMedico.Handler;
+
 import java.awt.EventQueue;
 import javax.swing.JComboBox;
 
@@ -128,25 +130,38 @@ public class MedicoGUI extends JFrame {
         });
         btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
         btnLimpar.setBounds(64, 390, 110, 32);
-        contentPane.add(btnLimpar);
+        getContentPane().add(btnLimpar);
         
         btnEnviar = new JButton("Enviar");
-        btnEnviar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (
-                    txtCRM.getText().equals("") || txtNome.getText().equals("") ||
-                    txtCPF.getText().equals("") || txtTelefone.getText().equals("")
-                    ) {
-                    JOptionPane.showMessageDialog(frame, "Todos os campos devem ser preenchidos!");
-                    txtCRM.setText("");
-                    txtNome.setText("");
-                    txtCPF.setText("");
-                    txtTelefone.setText("");
-                }
-            }
-        });
         btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 17));
         btnEnviar.setBounds(180, 390, 110, 32);
-        contentPane.add(btnEnviar);
+        getContentPane().add(btnEnviar);
+    }
+    public JButton getBtnEnviar() {
+        return btnEnviar;
+    }
+    public JButton getBtnLimpar() {
+        return btnLimpar;
+    }
+    public String getName() {
+        return txtNome.getText();
+    }
+    public String getCrm() {
+        return txtCRM.getText();
+    }
+    public String getCPF(){
+        return txtCPF.getText();
+    }
+    public String getTelefone(){
+        return txtTelefone.getText();
+    }
+    public Object getEsp(){
+        return cbBox.getSelectedItem();
+    }
+    public void addHandlerEnviar(Handler handler){
+        btnEnviar.addActionListener(handler);
+    }
+    public void addHandlerLimpar(Handler handler) {    
+        btnLimpar.addActionListener(handler);
     }
 }

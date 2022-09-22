@@ -1,18 +1,17 @@
 package view;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import controller.ControllerLogin.Handler;
+
 import java.awt.EventQueue;
 
 
@@ -24,7 +23,6 @@ public class LoginGUI extends JFrame {
     private JButton btnEnviar;
     private JButton btnLimpar;
     private static LoginGUI frame;
-    private MedicoGUI tela;
 
     /**
      * 
@@ -78,53 +76,38 @@ public class LoginGUI extends JFrame {
         txtPassword.setColumns(10);
 
         btnLimpar = new JButton("Limpar");
-        btnLimpar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                txtLogin.setText("");
-                txtPassword.setText("");
-        }
-        });
         btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
         btnLimpar.setBounds(64, 193, 110, 32);
-        contentPane.add(btnLimpar);
+        getContentPane().add(btnLimpar);
         
         btnEnviar = new JButton("Enviar");
-        btnEnviar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                char[] input = txtPassword.getPassword();
-                if (txtLogin.getText().equals("") || input.length == 0) {
-                    JOptionPane.showMessageDialog(frame, "Todos os campos devem ser preenchidos!");
-                    txtLogin.setText("");
-                    txtPassword.setText("");
-                }
-                else {
-                    if (txtLogin.getText().equals("user") && isPasswordValid(input)) {
-                        frame.dispose();
-                        tela = new MedicoGUI();
-                        tela.setVisible(true);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(frame, "Senha ou Login invalidos!");
-                    }
-                }
-            }
-
-            private boolean isPasswordValid(char[] input) {
-                boolean passwordValid = false;
-                char[] password = {'1', '2', '3', '4', '5'};
-                if (input.length == 0){
-                    passwordValid = false;
-                }
-                else{
-                    passwordValid = Arrays.equals(input, password);
-                }
-
-                return passwordValid;
-            }
-        });
         btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 17));
         btnEnviar.setBounds(180, 193, 110, 32);
-        contentPane.add(btnEnviar);
+        getContentPane().add(btnEnviar);
     }
-    
+
+    public JButton getBtnEnviar() {
+        return btnEnviar;
+    }
+    public JButton getBtnLimpar() {
+        return btnLimpar;
+    }
+    public String getUser(){
+        return (txtLogin.getText());
+    }
+    public char[] getPassword() {
+        return (txtPassword.getPassword());
+    }
+    public void setUser(String login){
+        txtLogin.setText(login);
+    }
+    public void setPassword(String password){
+        txtPassword.setText(password);
+    }
+    public void addHandlerEnviar(Handler handler){
+        btnEnviar.addActionListener(handler);
+    }
+    public void addHandlerLimpar(Handler handler) {    
+        btnLimpar.addActionListener(handler);
+    }
 }
