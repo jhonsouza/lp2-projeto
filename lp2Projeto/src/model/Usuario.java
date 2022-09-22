@@ -27,6 +27,12 @@ public class Usuario {
         return Password;
     }
 
+    /**
+     * Method called to validate the password and user is right
+     * @param password
+     * @param Login
+     * @return
+     */
     public boolean isLoginValid(char[] password, String Login) {
         if (isPasswordValid(password) && isUserValid(Login)) {
             return true;

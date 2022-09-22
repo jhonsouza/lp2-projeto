@@ -1,13 +1,15 @@
 package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
 import model.Usuario;
 import view.LoginGUI;
 import view.MedicoGUI;
+/**
+ * Controller responsible to load the login screen
+ */
 public class ControllerLogin extends Usuario {
     
     private LoginGUI lGUI;
@@ -30,6 +32,9 @@ public class ControllerLogin extends Usuario {
             if (e.getSource() == lGUI.getBtnEnviar()) {
                 String userLogin = lGUI.getUser();
                 char[] password = lGUI.getPassword();
+                /**
+                 * call method to validate password and user login
+                 */
                 boolean isValid = mUsuario.isLoginValid(password, userLogin);
                 if (userLogin.equals("") || password.length == 0) {
                     JOptionPane.showMessageDialog(lGUI.getContentPane(), "Todos os campos devem ser preenchidos!","Alerta!",2);

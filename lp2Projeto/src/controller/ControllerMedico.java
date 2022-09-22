@@ -41,11 +41,14 @@ public class ControllerMedico extends Medico {
                     JOptionPane.showMessageDialog(mGui.getContentPane(), "Dado Cadastrados com sucesso\n" + m,"Resultado",1);
                 }
             }
-        }
-
-        @Override
-        public String toString() {
-            return "Handler []";
+            else{
+                if (e.getSource() == mGui.getBtnLimpar()) {
+                    mGui.setCpf("");
+                    mGui.setCrm("");
+                    mGui.setTelefone("");
+                    mGui.setName("");
+                }
+            }
         }
 
     }

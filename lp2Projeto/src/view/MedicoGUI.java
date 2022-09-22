@@ -158,6 +158,18 @@ public class MedicoGUI extends JFrame {
     public Object getEsp(){
         return cbBox.getSelectedItem();
     }
+    public void setName(String name){
+        txtNome.setText(name);
+    }
+    public void setCrm(String crm){
+        txtCRM.setText(crm);
+    }
+    public void setCpf(String cpf){
+        txtCPF.setText(cpf);
+    }
+    public void setTelefone(String telefone){
+        txtTelefone.setText(telefone);
+    }
     public void addHandlerEnviar(Handler handler){
         btnEnviar.addActionListener(handler);
     }
